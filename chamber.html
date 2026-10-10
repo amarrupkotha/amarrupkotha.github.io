@@ -6,407 +6,368 @@
 <title>Dr. Rupkotha's Chamber 🌸</title>
 
 <style>
+:root {
+  --pink: #ffdae8;
+  --cream: #fff8ec;
+  --purple: #8062a5;
+  --floor: #f6d7bc;
+}
+
 * {
   box-sizing: border-box;
 }
 
-:root {
-  --pink: #f6a1c6;
-  --purple: #a17bd2;
-  --ink: #684e70;
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  color: var(--ink);
   font-family: "Noto Sans Bengali", "Hind Siliguri",
-               system-ui, sans-serif;
-  background: #fff7f8;
+               "SolaimanLipi", sans-serif;
+  color: #593e62;
+  background: var(--cream);
 }
 
 .topbar {
   position: relative;
-  z-index: 10;
+  z-index: 20;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  padding: 14px 20px;
-  background: #fffdf4eF;
-  box-shadow: 0 3px 18px #77517715;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 5%;
+  background: rgba(255, 250, 249, .94);
+  box-shadow: 0 3px 15px #6b456a18;
 }
 
 .brand {
-  color: #a24f8b;
-  font-size: clamp(16px, 3vw, 23px);
-  font-weight: 900;
+  font-weight: 800;
+  font-size: clamp(17px, 3vw, 25px);
 }
 
 .home-link {
-  padding: 9px 14px;
-  color: #80528e;
-  background: white;
-  border: 1px solid #ecd4e9;
-  border-radius: 25px;
+  color: #744f8d;
+  background: #f8e2ef;
+  border-radius: 30px;
+  padding: 10px 16px;
   text-decoration: none;
   font-size: 14px;
   font-weight: bold;
-  white-space: nowrap;
-}
-
-.chamber {
-  min-height: 100vh;
-  overflow: hidden;
-  background:
-    linear-gradient(#fff7f8a8, #fff4f6b8),
-    url("assets/chamber/clinic-bg.jpg") center center / cover no-repeat,
-    #e7f4ee;
 }
 
 .heading {
-  position: relative;
-  z-index: 4;
-  padding: 22px 12px 0;
   text-align: center;
+  padding: 24px 12px 16px;
+  position: relative;
+  z-index: 10;
 }
 
 .heading h1 {
-  margin: 0;
-  color: #a35191;
-  font-size: clamp(27px, 5.5vw, 48px);
-  text-shadow: 0 2px 0 white;
+  margin: 0 0 10px;
+  color: #a04e85;
+  font-size: clamp(25px, 5vw, 43px);
 }
 
 .heading p {
-  margin: 8px auto;
+  margin: 0;
   font-size: clamp(14px, 2.5vw, 18px);
-  line-height: 1.8;
 }
 
+.chamber {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #fff0f5;
+  background-image: url("assets/chamber/clinic-bg.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Main illustrated clinic scene */
 .playroom {
   position: relative;
   isolation: isolate;
   width: 100%;
-  max-width: 1100px;
-  height: clamp(490px, 72vw, 670px);
-  margin: 0 auto;
+  height: 790px;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 74%,
+      rgba(255, 239, 220, .25) 74%,
+      rgba(255, 239, 220, .25) 100%
+    );
 }
 
-/* Rupkotha — the main character */
+/* Visible floor with a soft top edge */
+.floor {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 24%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 118px,
+      rgba(179, 119, 95, .10) 119px,
+      rgba(179, 119, 95, .10) 121px
+    ),
+    linear-gradient(to bottom, #f8dfc9, #edc6ab);
+  border-top: 8px solid rgba(255, 250, 239, .85);
+  box-shadow: inset 0 10px 20px #bd866522;
+}
+
+/* Decorative floor rug */
+.rug {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 3%;
+  width: min(74%, 820px);
+  height: 19%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #f4b9d4;
+  border: 8px solid #fff0f4;
+  box-shadow: 0 8px 12px #8a5b5b20;
+}
+
+/* Doctor */
 .doctor {
   position: absolute;
-  z-index: 3;
-  width: clamp(230px, 36vw, 350px);
-  height: 86%;
+  z-index: 5;
   left: 50%;
-  bottom: 0;
+  bottom: 10%;
+  width: clamp(300px, 39vw, 490px);
+  height: 68%;
   object-fit: contain;
   object-position: center bottom;
   transform: translateX(-50%);
   transform-origin: center bottom;
-  filter: drop-shadow(0 9px 8px #70506c25);
-  animation: doctorSway 4s ease-in-out infinite;
+  animation: doctor-breathe 3.8s ease-in-out infinite;
+  filter: drop-shadow(0 8px 6px #74516a20);
 }
 
-/* Six children gathered around Rupkotha */
+/* Children */
 .child {
   position: absolute;
-  z-index: 4;
-  bottom: 1%;
-  width: clamp(125px, 20vw, 195px);
-  height: 44%;
+  z-index: 6;
+  width: clamp(175px, 24vw, 300px);
+  height: 43%;
   object-fit: contain;
   object-position: center bottom;
   transform-origin: center bottom;
-  filter: drop-shadow(0 5px 5px #70506c20);
-  animation: childPlay 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 7px 5px #74516a22);
+  animation: child-bounce 3s ease-in-out infinite;
 }
 
 .child-1 {
-  left: 0%;
-  bottom: 1%;
+  left: 1%;
+  bottom: 20%;
   animation-delay: -.4s;
 }
 
 .child-2 {
-  left: 13%;
-  bottom: 16%;
+  right: 1%;
+  bottom: 20%;
   animation-delay: -1.2s;
 }
 
 .child-3 {
-  left: 27%;
-  bottom: 0%;
-  animation-delay: -.8s;
+  left: 13%;
+  bottom: 3%;
+  animation-delay: -.9s;
 }
 
 .child-4 {
-  right: 27%;
-  bottom: 0%;
-  animation-delay: -1.5s;
+  right: 13%;
+  bottom: 3%;
+  animation-delay: -1.7s;
 }
 
 .child-5 {
-  right: 13%;
-  bottom: 16%;
-  animation-delay: -.6s;
+  left: 30%;
+  bottom: 1%;
+  width: clamp(150px, 19vw, 230px);
+  height: 34%;
+  animation-delay: -.7s;
 }
 
 .child-6 {
-  right: 0%;
+  right: 30%;
   bottom: 1%;
-  animation-delay: -1.8s;
+  width: clamp(150px, 19vw, 230px);
+  height: 34%;
+  animation-delay: -1.4s;
 }
 
 /* Floating decorations */
-.magic {
+.decoration {
   position: absolute;
-  z-index: 5;
+  z-index: 8;
   pointer-events: none;
-  font-size: clamp(22px, 4vw, 36px);
-  animation: sparkleFloat 5s ease-in-out infinite;
+  animation: sparkle 3s ease-in-out infinite;
 }
 
-.magic-1 { top: 9%; left: 9%; }
-.magic-2 { top: 22%; left: 35%; animation-delay: -2s; }
-.magic-3 { top: 11%; right: 9%; animation-delay: -1s; }
-.magic-4 { top: 34%; right: 29%; animation-delay: -3s; }
-.magic-5 { top: 32%; left: 23%; animation-delay: -1.5s; }
+.d1 { left: 8%; top: 8%; font-size: 34px; }
+.d2 { right: 8%; top: 13%; font-size: 38px; animation-delay: -.8s; }
+.d3 { left: 44%; top: 8%; font-size: 27px; animation-delay: -1.3s; }
+.d4 { right: 24%; top: 45%; font-size: 26px; animation-delay: -.5s; }
+.d5 { left: 23%; top: 48%; font-size: 29px; animation-delay: -1.6s; }
+.d6 { right: 5%; top: 62%; font-size: 30px; animation-delay: -.9s; }
 
 .welcome {
   position: relative;
-  z-index: 6;
-  width: fit-content;
-  max-width: calc(100% - 28px);
-  margin: 0 auto 20px;
-  padding: 13px 22px;
+  z-index: 10;
   text-align: center;
-  line-height: 1.9;
-  background: #ffffffed;
-  border: 2px solid white;
-  border-radius: 24px;
-  box-shadow: 0 7px 28px #a17bd225;
+  padding: 32px 18px 38px;
+  background: rgba(255, 249, 247, .96);
 }
 
-.welcome strong {
-  color: #b45598;
+.welcome h2 {
+  margin: 0 0 12px;
+  color: #a04e85;
+  font-size: clamp(23px, 4vw, 34px);
+}
+
+.welcome p {
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.9;
+  font-size: 16px;
 }
 
 .footer {
-  padding: 16px;
   text-align: center;
-  color: #8d7190;
-  font-size: 13px;
+  padding: 20px 12px;
+  background: #f8e2ef;
+  color: #805477;
+  font-size: 14px;
 }
 
-/* Animations */
-@keyframes doctorSway {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0) rotate(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(-8px) rotate(1deg);
-  }
+/* Gentle animations */
+@keyframes child-bounce {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
 }
 
-@keyframes childPlay {
-  0%, 100% {
-    translate: 0 0;
-    rotate: 0deg;
-  }
-  35% {
-    translate: 0 -10px;
-    rotate: -2deg;
-  }
-  70% {
-    translate: 0 -3px;
-    rotate: 2deg;
-  }
+@keyframes doctor-breathe {
+  0%, 100% { scale: 1; }
+  50% { scale: 1.015; }
 }
 
-@keyframes sparkleFloat {
-  0%, 100% {
-    translate: 0 0;
-    rotate: -8deg;
-  }
-  50% {
-    translate: 9px -18px;
-    rotate: 10deg;
-  }
+@keyframes sparkle {
+  0%, 100% { translate: 0 0; opacity: .75; }
+  50% { translate: 0 -12px; opacity: 1; }
 }
 
 /* Mobile layout */
-@media (max-width: 520px) {
+@media (max-width: 600px) {
   .topbar {
-    padding: 12px;
+    padding: 12px 4%;
   }
 
   .home-link {
-    padding: 8px 10px;
+    padding: 9px 11px;
     font-size: 12px;
   }
 
+  .heading {
+    padding: 20px 10px 12px;
+  }
+
   .playroom {
-    height: 490px;
+    height: 700px;
+  }
+
+  .floor {
+    height: 25%;
+  }
+
+  .rug {
+    width: 94%;
+    height: 18%;
+    bottom: 3%;
+    border-width: 5px;
   }
 
   .doctor {
-    width: 205px;
-    height: 74%;
-    bottom: 4%;
+    width: 88vw;
+    max-width: none;
+    height: 58%;
+    bottom: 12%;
   }
 
   .child {
-    width: 112px;
-    height: 35%;
+    width: 47vw;
+    max-width: none;
+    height: 31%;
   }
 
   .child-1 {
-    left: -3%;
-    bottom: 0;
+    left: -7%;
+    bottom: 22%;
   }
 
   .child-2 {
-    left: 5%;
-    bottom: 18%;
+    right: -7%;
+    bottom: 22%;
   }
 
   .child-3 {
-    left: 20%;
-    bottom: 0;
+    left: -8%;
+    bottom: 3%;
   }
 
   .child-4 {
-    right: 20%;
-    bottom: 0;
+    right: -8%;
+    bottom: 3%;
   }
 
   .child-5 {
-    right: 5%;
-    bottom: 18%;
+    left: 19%;
+    bottom: 0;
+    width: 34vw;
+    height: 26%;
   }
 
   .child-6 {
-    right: -3%;
+    right: 19%;
     bottom: 0;
+    width: 34vw;
+    height: 26%;
   }
 
+  .d1 { left: 4%; top: 5%; font-size: 25px; }
+  .d2 { right: 4%; top: 8%; font-size: 28px; }
+  .d3 { left: 45%; top: 5%; font-size: 22px; }
+  .d4 { right: 5%; top: 42%; font-size: 22px; }
+  .d5 { left: 5%; top: 43%; font-size: 22px; }
+  .d6 { right: 5%; top: 60%; font-size: 23px; }
+
   .welcome {
-    padding: 11px 14px;
+    padding: 25px 16px 30px;
+  }
+
+  .welcome p {
     font-size: 14px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation: none !important;
-  }
-}
-  
-/* EXTRA LARGE CHAMBER CHARACTERS */
-.playroom {
-  position: relative !important;
-  height: 1000px !important;
-  min-height: 1000px !important;
-  overflow: visible !important;
-}
-
-.playroom img.doctor {
-  position: absolute !important;
-  left: 50% !important;
-  top: 50% !important;
-  width: 700px !important;
-  max-width: 95vw !important;
-  height: auto !important;
-  transform: translate(-50%, -50%) !important;
-  object-fit: contain !important;
-  z-index: 4 !important;
-}
-
-.playroom img.child {
-  position: absolute !important;
-  width: 400px !important;
-  max-width: 58vw !important;
-  height: auto !important;
-  object-fit: contain !important;
-  z-index: 6 !important;
-}
-
-.playroom img.child-1 {
-  left: -2% !important;
-  top: 0 !important;
-}
-
-.playroom img.child-2 {
-  right: -2% !important;
-  top: 0 !important;
-}
-
-.playroom img.child-3 {
-  left: -3% !important;
-  top: 34% !important;
-}
-
-.playroom img.child-4 {
-  right: -3% !important;
-  top: 34% !important;
-}
-
-.playroom img.child-5 {
-  left: 8% !important;
-  bottom: 0 !important;
-}
-
-.playroom img.child-6 {
-  right: 8% !important;
-  bottom: 0 !important;
-}
-
-@media (max-width: 600px) {
-  .playroom {
-    height: 850px !important;
-    min-height: 850px !important;
-  }
-
-  .playroom img.doctor {
-    width: 110vw !important;
-    max-width: none !important;
-    top: 48% !important;
-  }
-
-  .playroom img.child {
-    width: 62vw !important;
-    max-width: none !important;
-  }
-
-  .playroom img.child-1 {
-    left: -10% !important;
-    top: 0 !important;
-  }
-
-  .playroom img.child-2 {
-    right: -10% !important;
-    top: 0 !important;
-  }
-
-  .playroom img.child-3 {
-    left: -12% !important;
-    top: 31% !important;
-  }
-
-  .playroom img.child-4 {
-    right: -12% !important;
-    top: 31% !important;
-  }
-
-  .playroom img.child-5 {
-    left: -5% !important;
-    bottom: 0 !important;
-  }
-
-  .playroom img.child-6 {
-    right: -5% !important;
-    bottom: 0 !important;
+    scroll-behavior: auto !important;
   }
 }
 </style>
@@ -427,38 +388,67 @@ body {
 
   <main class="playroom">
 
-    <span class="magic magic-1" aria-hidden="true">🦋</span>
-    <span class="magic magic-2" aria-hidden="true">✨</span>
-    <span class="magic magic-3" aria-hidden="true">🌟</span>
-    <span class="magic magic-4" aria-hidden="true">💖</span>
-    <span class="magic magic-5" aria-hidden="true">🎈</span>
+    <div class="floor"></div>
+    <div class="rug"></div>
 
-    <img class="child child-1"
-      src="assets/chamber/child-1.png" alt="খেলতে থাকা শিশু">
+    <span class="decoration d1">🦋</span>
+    <span class="decoration d2">✨</span>
+    <span class="decoration d3">🌟</span>
+    <span class="decoration d4">💖</span>
+    <span class="decoration d5">🎈</span>
+    <span class="decoration d6">🌼</span>
 
-    <img class="child child-2"
-      src="assets/chamber/child-2.png" alt="আনন্দিত শিশু">
+    <img
+      class="child child-1"
+      src="assets/chamber/child-1.png"
+      alt="চেম্বারে খেলতে থাকা শিশু"
+    >
 
-    <img class="child child-3"
-      src="assets/chamber/child-3.png" alt="হাসিখুশি শিশু">
+    <img
+      class="child child-2"
+      src="assets/chamber/child-2.png"
+      alt="চেম্বারে খেলতে থাকা শিশু"
+    >
 
-    <img class="child child-4"
-      src="assets/chamber/child-4.png" alt="খেলতে থাকা শিশু">
+    <img
+      class="child child-3"
+      src="assets/chamber/child-3.png"
+      alt="চেম্বারে খেলতে থাকা শিশু"
+    >
 
-    <img class="child child-5"
-      src="assets/chamber/child-5.png" alt="আনন্দিত শিশু">
+    <img
+      class="child child-4"
+      src="assets/chamber/child-4.png"
+      alt="চেম্বারে খেলতে থাকা শিশু"
+    >
 
-    <img class="child child-6"
-      src="assets/chamber/child-6.png" alt="হাসিখুশি শিশু">
+    <img
+      class="child child-5"
+      src="assets/chamber/child-5.png"
+      alt="চেম্বারে খেলতে থাকা শিশু"
+    >
 
-    <img class="doctor"
-      src="assets/chamber/rupkotha.png" alt="Dr. Rupkotha">
+    <img
+      class="child child-6"
+      src="assets/chamber/child-6.png"
+      alt="চেম্বারে খেলতে থাকা শিশু"
+    >
+
+    <img
+      class="doctor"
+      src="assets/chamber/rupkotha.png"
+      alt="Dr. Rupkotha"
+    >
 
   </main>
 
   <section class="welcome">
-    <strong>রূপকথার চেম্বারে স্বাগতম! 💗</strong><br>
-    এখানে ছোট্ট হাসিগুলোই সবচেয়ে বড় উপহার।
+    <h2>স্বাগতম, ছোট্ট বন্ধুরা! 🌷</h2>
+    <p>
+      এখানে ভয় পাওয়ার কিছু নেই। হাসি, গল্প আর খেলায় ভরে উঠুক
+      আমাদের ছোট্ট চেম্বার। Dr. Rupkotha তোমাদের জন্য
+      নিয়ে এসেছেন একটুকরো মিষ্টি, রঙিন পৃথিবী। 🩺🧸💗
+    </p>
   </section>
 
   <footer class="footer">
