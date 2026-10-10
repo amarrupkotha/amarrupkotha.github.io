@@ -1,14 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
   <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7TQ60CSWHB"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-7TQ60CSWHB');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7TQ60CSWHB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7TQ60CSWHB');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#10152f">
@@ -17,11 +19,262 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: #080d20;
+    }
+
+    /* প্রবেশদ্বার */
+    .welcome-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+      padding: 28px 16px;
+      background:
+        radial-gradient(ellipse at 50% 70%, #263d77 0%, transparent 48%),
+        radial-gradient(ellipse at 50% 10%, #142c62 0%, transparent 60%),
+        linear-gradient(180deg, #05091b, #101b3b 60%, #080d20);
+      color: #fff2c5;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    .welcome-screen::before {
+      content: "✦   ·     ✧       ·   ✦       ·      ✧   ·     ✦";
+      position: absolute;
+      inset: 5% 0 auto;
+      text-align: center;
+      color: #fff1b0;
+      font-size: 20px;
+      line-height: 3.5;
+      letter-spacing: 8px;
+      opacity: .8;
+      pointer-events: none;
+    }
+
+    .welcome-screen::after {
+      content: "✧      ·       ✦       ·      ✧       ·       ✦";
+      position: absolute;
+      inset: auto 0 8%;
+      text-align: center;
+      color: #f9d78a;
+      font-size: 18px;
+      line-height: 3;
+      letter-spacing: 6px;
+      pointer-events: none;
+    }
+
+    .welcome-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 560px;
+      text-align: center;
+      padding: 24px 12px;
+    }
+
+    .moon {
+      font-size: 52px;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 0 18px #ffdc83);
+      animation: moonGlow 3s ease-in-out infinite alternate;
+    }
+
+    .welcome-title {
+      font-size: clamp(27px, 7vw, 43px);
+      line-height: 1.65;
+      margin: 0 auto 12px;
+      color: #ffe5a0;
+      text-shadow: 0 0 22px #dba94c88;
+    }
+
+    .welcome-subtitle {
+      color: #e3e9ff;
+      font-size: 15px;
+      line-height: 1.9;
+      margin: 0 auto 30px;
+    }
+
+    .door-scene {
+      position: relative;
+      width: min(270px, 78vw);
+      height: 290px;
+      margin: 0 auto 25px;
+      perspective: 1000px;
+    }
+
+    .door-glow {
+      position: absolute;
+      inset: 25px 20px 0;
+      border-radius: 50%;
+      background: #ffc55b;
+      filter: blur(48px);
+      opacity: .4;
+      animation: doorGlow 2.5s ease-in-out infinite alternate;
+    }
+
+    .door-frame {
+      position: absolute;
+      inset: 0;
+      border: 8px solid #bd8a43;
+      border-bottom: 0;
+      border-radius: 140px 140px 0 0;
+      background: linear-gradient(180deg, #fbd58b, #69401f 80%);
+      box-shadow: 0 0 0 4px #51351f, 0 0 38px #ffce6d77;
+      overflow: hidden;
+    }
+
+    .door-light {
+      position: absolute;
+      inset: 8px;
+      border-radius: 125px 125px 0 0;
+      background:
+        radial-gradient(ellipse at center, #fff6bf 0%, #ffc35b 24%, #6e4590 55%, #101735 100%);
+      opacity: .95;
+    }
+
+    .door-leaf {
+      position: absolute;
+      top: 8px;
+      bottom: 0;
+      width: 50%;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 23px, #3c2114 24px 27px),
+        linear-gradient(90deg, #59321d, #a56a37 45%, #61371e);
+      border: 3px solid #e5b55e;
+      box-shadow: inset 0 0 15px #160d09;
+      transition: transform 1.7s cubic-bezier(.7,0,.2,1);
+      transform-style: preserve-3d;
+    }
+
+    .door-leaf.left {
+      left: 8px;
+      transform-origin: left center;
+      border-radius: 120px 0 0 0;
+    }
+
+    .door-leaf.right {
+      right: 8px;
+      transform-origin: right center;
+      border-radius: 0 120px 0 0;
+    }
+
+    .door-leaf::before {
+      content: "✧";
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 38px;
+      color: #ffe2a0;
+      text-shadow: 0 0 15px #ffdc82;
+    }
+
+    .door-leaf::after {
+      content: "";
+      position: absolute;
+      top: 18px;
+      bottom: 18px;
+      left: 10px;
+      right: 10px;
+      border: 1px solid #e6bb6c;
+      border-radius: 100px 100px 0 0;
+      opacity: .65;
+    }
+
+    .door-handle {
+      position: absolute;
+      z-index: 3;
+      top: 56%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      margin-left: -5px;
+      border-radius: 50%;
+      background: #ffdf7c;
+      box-shadow: 0 0 12px #ffcf63;
+    }
+
+    .enter-button {
+      display: inline-block;
+      border: 1px solid #f4d17e;
+      border-radius: 50px;
+      padding: 13px 30px;
+      background: linear-gradient(135deg, #182953, #080e26);
+      color: #ffe5a0;
+      font-family: inherit;
+      font-size: 17px;
+      cursor: pointer;
+      box-shadow: 0 0 24px #eab95444;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .enter-button:active {
+      transform: scale(.96);
+    }
+
+    .enter-button:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 5px;
+    }
+
+    .welcome-hint {
+      color: #c5d0f1;
+      font-size: 12px;
+      margin-top: 15px;
+    }
+
+    .welcome-screen.opening .door-leaf.left {
+      transform: rotateY(-105deg);
+    }
+
+    .welcome-screen.opening .door-leaf.right {
+      transform: rotateY(105deg);
+    }
+
+    .welcome-screen.opening .door-light {
+      box-shadow: 0 0 100px 35px #ffe9a6;
+    }
+
+    .welcome-screen.hide-screen {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    @keyframes moonGlow {
+      from { transform: scale(1); }
+      to { transform: scale(1.08); }
+    }
+
+    @keyframes doorGlow {
+      from { opacity: .25; }
+      to { opacity: .65; }
+    }
+
+    /* মূল ওয়েবসাইট */
+    #main-site {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1.2s ease;
+    }
+
+    #main-site.site-visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
     .albums {
       max-width: 850px;
       margin: 40px auto;
       padding: 20px;
-      box-sizing: border-box;
     }
 
     .albums-heading {
@@ -37,7 +290,6 @@
       background: rgba(255,255,255,0.07);
       backdrop-filter: blur(10px);
       box-shadow: 0 8px 30px rgba(0,0,0,0.16);
-      box-sizing: border-box;
     }
 
     .album-card h3 {
@@ -66,7 +318,7 @@
 
     .album-note {
       text-align: center;
-      opacity: 0.8;
+      opacity: .8;
       font-size: 13px;
     }
 
@@ -75,7 +327,6 @@
       margin: 35px auto;
       padding: 24px;
       line-height: 2;
-      box-sizing: border-box;
     }
 
     .story h1 {
@@ -96,30 +347,66 @@
     .site-footer {
       text-align: center;
       padding: 25px 12px;
-      opacity: 0.75;
+      opacity: .75;
       font-size: 13px;
+      line-height: 2;
     }
 
     @media (max-width: 600px) {
-      .story,
-      .albums {
-        padding: 14px;
-      }
+      .story, .albums { padding: 14px; }
+      .album-card { padding: 17px; }
+      .door-scene { height: 260px; }
+      .welcome-content { padding: 15px 8px; }
+    }
 
-      .album-card {
-        padding: 17px;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
 </head>
 
 <body>
-<main>
 
-  <section class="story">
-    <h1>রূপকথার গল্প 🌙</h1>
+<!-- জাদুকরি প্রবেশদ্বার -->
+<section class="welcome-screen" id="welcome-screen"
+         aria-label="রূপকথার প্রবেশদ্বার">
+  <div class="welcome-content">
+    <div class="moon" aria-hidden="true">☾ ✦</div>
 
-    <div class="story-text">মানুষের জীবনে যখন সেই পারফেক্ট মানুষটা আসে
+    <h1 class="welcome-title">রূপকথার জগতে আপনাকে স্বাগতম</h1>
+
+    <p class="welcome-subtitle">
+      বাস্তবতার ওপারে, কল্পনার এক অচেনা রাজ্যে...
+    </p>
+
+    <div class="door-scene" aria-hidden="true">
+      <div class="door-glow"></div>
+      <div class="door-frame">
+        <div class="door-light"></div>
+        <div class="door-leaf left"></div>
+        <div class="door-leaf right"></div>
+        <div class="door-handle"></div>
+      </div>
+    </div>
+
+    <button class="enter-button" id="enter-button" type="button">
+      ✦ &nbsp; দরজা খুলুন &nbsp; ✦
+    </button>
+
+    <p class="welcome-hint">দরজাটি খুলে প্রবেশ করো তোমার রূপকথায় 🌙</p>
+  </div>
+</section>
+
+<!-- তোমার মূল ওয়েবসাইট -->
+<div id="main-site">
+  <main>
+    <section class="story">
+      <h1>রূপকথার গল্প 🌙</h1>
+
+      <div class="story-text">মানুষের জীবনে যখন সেই পারফেক্ট মানুষটা আসে
 কিছু সুখ হয়ে বা কিছু সুখের কারণ হয়ে,
 তখন জীবনটাই থতমত বনে যায়।
 অবাক হয়ে ভাবি, এত সুখ চেয়েছি কী?
@@ -153,129 +440,105 @@
 
 I love youu pakhi🥰</div>
 
-    <p class="signature">- তোমার বরপাখি 🥰</p>
-  </section>
+      <p class="signature">- তোমার বরপাখি 🥰</p>
+    </section>
 
-
-  <section class="albums">
-
-    <div class="albums-heading">
-      <h2>🎵 আমাদের গানের অ্যালবাম</h2>
-      <p>কিছু গান, কিছু অনুভূতি, কিছু স্মৃতি আর এক টুকরো রূপকথা ❤️</p>
-    </div>
-
-
-    <!-- Album 1 -->
-    <div class="album-card">
-      <h3>🌙 রূপকথার রাজ্যে পদার্পন</h3>
-      <p class="album-note">অ্যালবাম ১ · ৬টি গান</p>
-
-      <div class="track">
-        <span class="track-label">🎵 Kono ekdin</span>
-        <audio controls preload="none">
-          <source src="Kono%20ekdin.mp3" type="audio/mpeg">
-        </audio>
+    <section class="albums">
+      <div class="albums-heading">
+        <h2>🎵 আমাদের গানের অ্যালবাম</h2>
+        <p>কিছু গান, কিছু অনুভূতি, কিছু স্মৃতি আর এক টুকরো রূপকথা ❤️</p>
       </div>
 
-      <div class="track">
-        <span class="track-label">🎵 Purnota</span>
-        <audio controls preload="none">
-          <source src="Purnota.mp3" type="audio/mpeg">
-        </audio>
+      <div class="album-card">
+        <h3>🌙 রূপকথার রাজ্যে পদার্পন</h3>
+        <p class="album-note">অ্যালবাম ১ · ৬টি গান</p>
+
+        <div class="track">
+          <span class="track-label">🎵 Kono ekdin</span>
+          <audio controls preload="none"><source src="Kono%20ekdin.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="track">
+          <span class="track-label">🎵 Purnota</span>
+          <audio controls preload="none"><source src="Purnota.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="track">
+          <span class="track-label">🎵 Amar rupkotha</span>
+          <audio controls preload="none"><source src="Amar%20rupkotha.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="track">
+          <span class="track-label">🎵 Paliye jabo</span>
+          <audio controls preload="none"><source src="Paliye%20jabo.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="track">
+          <span class="track-label">🎵 Cholo harai</span>
+          <audio controls preload="none"><source src="Cholo%20harai.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="track">
+          <span class="track-label">🎵 kivabe thakbo</span>
+          <audio controls preload="none"><source src="Kivabe%20thakbo.mp3" type="audio/mpeg"></audio>
+        </div>
       </div>
 
-      <div class="track">
-        <span class="track-label">🎵 Amar rupkotha</span>
-        <audio controls preload="none">
-          <source src="Amar%20rupkotha.mp3" type="audio/mpeg">
-        </audio>
+      <div class="album-card">
+        <h3>🕊️ বন্দীদশার পরে</h3>
+        <p class="album-note">অ্যালবাম ২ · ৬টি গান</p>
+
+        <div class="track">
+          <span class="track-label">🎵 Opekkha</span>
+          <audio controls preload="none"><source src="Opekkha.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="track">
+          <span class="track-label">🎵 Amay dekho tumi</span>
+          <audio controls preload="none"><source src="Amay%20dekho%20tumi%20%5Busesuno.com%5D.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="track">
+          <span class="track-label">🎵 Ure jabo (paliye jabo 2)</span>
+          <audio controls preload="none"><source src="Ure%20jabo%20final.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="track">
+          <span class="track-label">🎵 shopno</span>
+          <audio controls preload="none"><source src="shopno%20%5Busesuno.com%5D.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="track">
+          <span class="track-label">🎵 pakhi</span>
+          <audio controls preload="none"><source src="pakhi%20-%20usesuno.com.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="track">
+          <span class="track-label">🎵 ekta govir ghum (reprise)</span>
+          <audio controls preload="none"><source src="গভীর%20ঘুম%20-%20usesuno.com.mp3" type="audio/mpeg"></audio>
+        </div>
       </div>
+    </section>
+  </main>
 
-      <div class="track">
-        <span class="track-label">🎵 Paliye jabo</span>
-        <audio controls preload="none">
-          <source src="Paliye%20jabo.mp3" type="audio/mpeg">
-        </audio>
-      </div>
+  <footer class="site-footer">
+    © 2026 Sakin Shahriar. All Rights Reserved.<br>
+    All original lyrics and written works on this website are my own creations and are protected by applicable copyright laws.<br>
+    Some audio recordings on this website were created using AI-assisted music tools. Rights relating to AI-generated audio are subject to applicable laws and the relevant platform's terms.<br>
+    No part of the original written content may be copied, reproduced, or redistributed without my permission.<br>
+    Special Permission: RUPKOTHA is personally permitted by the author to access, read, and privately enjoy these writings and songs. ❤️
+  </footer>
+</div>
 
-      <div class="track">
-        <span class="track-label">🎵 Cholo harai</span>
-        <audio controls preload="none">
-          <source src="Cholo%20harai.mp3" type="audio/mpeg">
-        </audio>
-      </div>
+<script>
+  const welcomeScreen = document.getElementById('welcome-screen');
+  const enterButton = document.getElementById('enter-button');
+  const mainSite = document.getElementById('main-site');
 
-      <div class="track">
-        <span class="track-label">🎵 kivabe thakbo</span>
-        <audio controls preload="none">
-          <source src="Kivabe%20thakbo.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-    </div>
+  enterButton.addEventListener('click', function () {
+    enterButton.disabled = true;
+    welcomeScreen.classList.add('opening');
 
+    window.setTimeout(function () {
+      welcomeScreen.classList.add('hide-screen');
+      mainSite.classList.add('site-visible');
+      document.body.style.overflow = 'auto';
+    }, 1500);
+  });
 
-    <!-- Album 2 -->
-    <div class="album-card">
-      <h3>🕊️ বন্দীদশার পরে</h3>
-      <p class="album-note">অ্যালবাম ২ · ৬টি গান</p>
-
-      <div class="track">
-        <span class="track-label">🎵 Opekkha</span>
-        <audio controls preload="none">
-          <source src="Opekkha.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-
-      <div class="track">
-        <span class="track-label">🎵 Amay dekho tumi</span>
-        <audio controls preload="none">
-          <source src="Amay%20dekho%20tumi%20%5Busesuno.com%5D.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-
-      <div class="track">
-        <span class="track-label">🎵 Ure jabo (paliye jabo 2)</span>
-        <audio controls preload="none">
-          <source src="Ure%20jabo%20final.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-
-      <div class="track">
-        <span class="track-label">🎵 shopno</span>
-        <audio controls preload="none">
-          <source src="shopno%20%5Busesuno.com%5D.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-
-      <div class="track">
-        <span class="track-label">🎵 pakhi</span>
-        <audio controls preload="none">
-          <source src="pakhi%20-%20usesuno.com.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-
-      <div class="track">
-        <span class="track-label">🎵 ekta govir ghum (reprise)</span>
-        <audio controls preload="none">
-          <source src="গভীর%20ঘুম%20-%20usesuno.com.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-    </div>
-
-  </section>
-</main>
-
-<footer class="site-footer">
-  © 2026 Sakin Shahriar. All Rights Reserved.
-
-All original lyrics and written works on this website are my own creations and are protected by applicable copyright laws.
-
-Some audio recordings on this website were created using AI-assisted music tools. Rights relating to AI-generated audio are subject to applicable laws and the relevant platform's terms.
-
-No part of the original written content may be copied, reproduced, or redistributed without my permission.
-
-Special Permission: RUPKOTHA is personally permitted by the author to access, read, and privately enjoy these writings and songs. ❤️
-</footer>
+  /* প্রবেশদ্বার থাকা অবস্থায় পেছনের পেজ স্ক্রল বন্ধ */
+  document.body.style.overflow = 'hidden';
+</script>
 
 </body>
 </html>
