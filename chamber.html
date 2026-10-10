@@ -302,6 +302,56 @@ body {
     animation: none !important;
   }
 }
+  
+/* Make the doctor and children much larger */
+.playroom {
+  height: 780px !important;
+  overflow: visible !important;
+}
+
+.doctor {
+  width: 460px !important;
+  max-width: 75vw !important;
+  height: auto !important;
+  z-index: 5 !important;
+}
+
+.child {
+  width: 260px !important;
+  max-width: 44vw !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+.child-1 { left: 0 !important; top: 5% !important; }
+.child-2 { right: 0 !important; top: 5% !important; }
+.child-3 { left: 0 !important; top: 40% !important; }
+.child-4 { right: 0 !important; top: 40% !important; }
+.child-5 { left: 12% !important; bottom: 0 !important; }
+.child-6 { right: 12% !important; bottom: 0 !important; }
+
+@media (max-width: 600px) {
+  .playroom {
+    height: 680px !important;
+  }
+
+  .doctor {
+    width: 300px !important;
+    max-width: 82vw !important;
+  }
+
+  .child {
+    width: 155px !important;
+    max-width: 43vw !important;
+  }
+
+  .child-1 { left: 0 !important; top: 4% !important; }
+  .child-2 { right: 0 !important; top: 4% !important; }
+  .child-3 { left: 0 !important; top: 35% !important; }
+  .child-4 { right: 0 !important; top: 35% !important; }
+  .child-5 { left: 0 !important; bottom: 0 !important; }
+  .child-6 { right: 0 !important; bottom: 0 !important; }
+}
 </style>
 </head>
 
