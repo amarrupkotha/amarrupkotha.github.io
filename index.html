@@ -11,23 +11,37 @@
   </script>
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#10152f">
-  <title>রূপকথার গল্প ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d20">
   <meta name="description" content="রূপকথার গল্প, ভালোবাসার লেখা আর আমাদের গান।">
+  <title>রূপকথার গল্প ❤️</title>
   <link rel="stylesheet" href="style.css">
 
   <style>
-    * { box-sizing: border-box; }
+    :root {
+      --night: #080d20;
+      --blue: #101c3c;
+      --gold: #ffe3a0;
+      --soft: #dce5ff;
+    }
 
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      background: #080d20;
+      background: var(--night);
     }
 
-    /* প্রবেশদ্বার */
+    /* =========================
+       জাদুকরি প্রবেশদ্বার
+    ========================= */
+
     .welcome-screen {
       position: fixed;
       inset: 0;
@@ -37,65 +51,40 @@
       justify-content: center;
       overflow-y: auto;
       padding: 28px 16px;
+      color: var(--gold);
+      text-align: center;
       background:
-        radial-gradient(ellipse at 50% 70%, #263d77 0%, transparent 48%),
-        radial-gradient(ellipse at 50% 10%, #142c62 0%, transparent 60%),
-        linear-gradient(180deg, #05091b, #101b3b 60%, #080d20);
-      color: #fff2c5;
+        radial-gradient(ellipse at 50% 68%, #263e77 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 15%, #1b3264 0%, transparent 55%),
+        linear-gradient(180deg, #05091b, #101b3b 65%, #080d20);
       transition: opacity 1s ease, visibility 1s ease;
-    }
-
-    .welcome-screen::before {
-      content: "✦   ·     ✧       ·   ✦       ·      ✧   ·     ✦";
-      position: absolute;
-      inset: 5% 0 auto;
-      text-align: center;
-      color: #fff1b0;
-      font-size: 20px;
-      line-height: 3.5;
-      letter-spacing: 8px;
-      opacity: .8;
-      pointer-events: none;
-    }
-
-    .welcome-screen::after {
-      content: "✧      ·       ✦       ·      ✧       ·       ✦";
-      position: absolute;
-      inset: auto 0 8%;
-      text-align: center;
-      color: #f9d78a;
-      font-size: 18px;
-      line-height: 3;
-      letter-spacing: 6px;
-      pointer-events: none;
     }
 
     .welcome-content {
       position: relative;
-      z-index: 1;
+      z-index: 3;
       width: 100%;
       max-width: 560px;
-      text-align: center;
-      padding: 24px 12px;
-    }
-
-    .moon {
-      font-size: 52px;
-      margin-bottom: 12px;
-      filter: drop-shadow(0 0 18px #ffdc83);
-      animation: moonGlow 3s ease-in-out infinite alternate;
+      padding: 24px 8px;
     }
 
     .welcome-title {
-      font-size: clamp(27px, 7vw, 43px);
+      font-size: clamp(27px, 6.8vw, 43px);
       line-height: 1.65;
-      margin: 0 auto 12px;
-      color: #ffe5a0;
-      text-shadow: 0 0 22px #dba94c88;
+      margin: 10px auto 12px;
+      color: var(--gold);
+      text-shadow: 0 0 24px #e5b65d66;
+    }
+
+    .moon {
+      font-size: 48px;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 0 15px #ffdc83);
+      animation: moonGlow 3s ease-in-out infinite alternate;
     }
 
     .welcome-subtitle {
-      color: #e3e9ff;
+      color: var(--soft);
       font-size: 15px;
       line-height: 1.9;
       margin: 0 auto 30px;
@@ -122,12 +111,12 @@
     .door-frame {
       position: absolute;
       inset: 0;
+      overflow: hidden;
       border: 8px solid #bd8a43;
       border-bottom: 0;
       border-radius: 140px 140px 0 0;
       background: linear-gradient(180deg, #fbd58b, #69401f 80%);
       box-shadow: 0 0 0 4px #51351f, 0 0 38px #ffce6d77;
-      overflow: hidden;
     }
 
     .door-light {
@@ -136,7 +125,6 @@
       border-radius: 125px 125px 0 0;
       background:
         radial-gradient(ellipse at center, #fff6bf 0%, #ffc35b 24%, #6e4590 55%, #101735 100%);
-      opacity: .95;
     }
 
     .door-leaf {
@@ -144,10 +132,10 @@
       top: 8px;
       bottom: 0;
       width: 50%;
+      border: 3px solid #e5b55e;
       background:
         repeating-linear-gradient(90deg, transparent 0 23px, #3c2114 24px 27px),
         linear-gradient(90deg, #59321d, #a56a37 45%, #61371e);
-      border: 3px solid #e5b55e;
       box-shadow: inset 0 0 15px #160d09;
       transition: transform 1.7s cubic-bezier(.7,0,.2,1);
       transform-style: preserve-3d;
@@ -202,17 +190,16 @@
     }
 
     .enter-button {
-      display: inline-block;
       border: 1px solid #f4d17e;
       border-radius: 50px;
       padding: 13px 30px;
       background: linear-gradient(135deg, #182953, #080e26);
-      color: #ffe5a0;
-      font-family: inherit;
+      color: var(--gold);
+      font: inherit;
       font-size: 17px;
       cursor: pointer;
       box-shadow: 0 0 24px #eab95444;
-      transition: transform .25s ease, box-shadow .25s ease;
+      transition: transform .25s ease;
     }
 
     .enter-button:active {
@@ -248,6 +235,74 @@
       pointer-events: none;
     }
 
+    /* =========================
+       তারা ও জোনাকি
+    ========================= */
+
+    .magic-layer {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .welcome-magic {
+      z-index: 1;
+    }
+
+    .firefly {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #fff0a5;
+      box-shadow: 0 0 10px 4px #ffd45c77;
+      animation:
+        fireflyMove 8s ease-in-out infinite alternate,
+        fireflyBlink 2.5s ease-in-out infinite alternate;
+    }
+
+    .firefly:nth-child(1)  { left: 7%;  top: 25%; animation-delay: -1s; }
+    .firefly:nth-child(2)  { left: 18%; top: 61%; animation-delay: -4s; }
+    .firefly:nth-child(3)  { left: 29%; top: 34%; animation-delay: -2s; }
+    .firefly:nth-child(4)  { left: 42%; top: 78%; animation-delay: -6s; }
+    .firefly:nth-child(5)  { left: 57%; top: 24%; animation-delay: -3s; }
+    .firefly:nth-child(6)  { left: 69%; top: 58%; animation-delay: -5s; }
+    .firefly:nth-child(7)  { left: 82%; top: 36%; animation-delay: -2s; }
+    .firefly:nth-child(8)  { left: 92%; top: 76%; animation-delay: -7s; }
+    .firefly:nth-child(9)  { left: 13%; top: 84%; animation-delay: -3s; }
+    .firefly:nth-child(10) { left: 75%; top: 85%; animation-delay: -1s; }
+    .firefly:nth-child(11) { left: 35%; top: 17%; animation-delay: -5s; }
+    .firefly:nth-child(12) { left: 53%; top: 48%; animation-delay: -4s; }
+
+    @keyframes fireflyMove {
+      from { transform: translate(0, 0); }
+      to { transform: translate(18px, -35px); }
+    }
+
+    @keyframes fireflyBlink {
+      from { opacity: .2; }
+      to { opacity: 1; }
+    }
+
+    .star-field {
+      position: absolute;
+      inset: 0;
+      opacity: .65;
+      background-image:
+        radial-gradient(circle, #fff0bf 1px, transparent 1.8px),
+        radial-gradient(circle, #b8dcff 1px, transparent 1.8px),
+        radial-gradient(circle, #ffffff 1.2px, transparent 2px);
+      background-size: 83px 97px, 127px 139px, 181px 163px;
+      background-position: 10px 20px, 45px 70px, 80px 30px;
+      animation: starTwinkle 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes starTwinkle {
+      from { opacity: .25; }
+      to { opacity: .8; }
+    }
+
     @keyframes moonGlow {
       from { transform: scale(1); }
       to { transform: scale(1.08); }
@@ -258,8 +313,19 @@
       to { opacity: .65; }
     }
 
-    /* মূল ওয়েবসাইট */
+    /* =========================
+       মূল ওয়েবসাইট
+    ========================= */
+
     #main-site {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 100vh;
+      color: #f1f2ff;
+      background:
+        radial-gradient(ellipse at 50% 10%, #142b58 0%, transparent 48%),
+        linear-gradient(180deg, #080d20, #101a35 50%, #080d20);
       opacity: 0;
       visibility: hidden;
       transition: opacity 1.2s ease;
@@ -268,6 +334,63 @@
     #main-site.site-visible {
       opacity: 1;
       visibility: visible;
+    }
+
+    #main-site .main-magic {
+      z-index: -1;
+    }
+
+    /* মূল লেখার পেছনে মৃদু রংধনু */
+    .rainbow-bridge {
+      position: absolute;
+      top: 170px;
+      left: 50%;
+      width: min(330px, 78vw);
+      height: 110px;
+      transform: translateX(-50%);
+      border-top: 5px solid #ff9eae;
+      border-radius: 50% 50% 0 0;
+      box-shadow:
+        0 -6px 0 -1px #ffd78c,
+        0 -12px 0 -2px #a5e9ad,
+        0 -18px 0 -3px #8bd9ff,
+        0 -24px 0 -4px #c6a0ff;
+      opacity: .16;
+      pointer-events: none;
+    }
+
+    .story,
+    .albums,
+    .site-footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    .story {
+      max-width: 850px;
+      margin: 35px auto;
+      padding: 24px;
+      line-height: 2;
+      border-radius: 24px;
+      background: rgba(7, 15, 38, .28);
+    }
+
+    .story h1 {
+      text-align: center;
+      line-height: 1.6;
+      color: #ffe4a3;
+      text-shadow: 0 0 20px #e9bd6655;
+    }
+
+    .story-text {
+      white-space: pre-line;
+      line-height: 2.1;
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 24px;
+      color: #ffe4a3;
     }
 
     .albums {
@@ -281,25 +404,37 @@
       margin-bottom: 28px;
     }
 
+    .albums-heading h2 {
+      color: #ffe4a3;
+      line-height: 1.7;
+    }
+
     .album-card {
       margin: 28px 0;
       padding: 24px;
-      border: 1px solid rgba(255,255,255,0.18);
+      border: 1px solid rgba(255, 224, 160, .24);
       border-radius: 22px;
-      background: rgba(255,255,255,0.07);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.16);
+      background: rgba(7, 15, 38, .78);
+      box-shadow: 0 8px 30px rgba(0,0,0,.22);
+      backdrop-filter: blur(8px);
     }
 
     .album-card h3 {
       text-align: center;
       line-height: 1.7;
       margin-top: 0;
+      color: #ffe4a3;
+    }
+
+    .album-note {
+      text-align: center;
+      opacity: .8;
+      font-size: 13px;
     }
 
     .track {
       padding: 14px 0;
-      border-top: 1px solid rgba(255,255,255,0.14);
+      border-top: 1px solid rgba(255,255,255,.12);
     }
 
     .track-label {
@@ -315,47 +450,39 @@
       max-width: 100%;
     }
 
-    .album-note {
-      text-align: center;
-      opacity: .8;
-      font-size: 13px;
-    }
-
-    .story {
-      max-width: 850px;
-      margin: 35px auto;
-      padding: 24px;
-      line-height: 2;
-    }
-
-    .story h1 {
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    .story-text {
-      white-space: pre-line;
-      line-height: 2.1;
-    }
-
-    .signature {
-      text-align: right;
-      margin-top: 24px;
-    }
-
     .site-footer {
       text-align: center;
       padding: 25px 12px;
-      opacity: .75;
+      opacity: .78;
       font-size: 13px;
       line-height: 2;
+      overflow-wrap: anywhere;
     }
 
     @media (max-width: 600px) {
-      .story, .albums { padding: 14px; }
-      .album-card { padding: 17px; }
-      .door-scene { height: 260px; }
-      .welcome-content { padding: 15px 8px; }
+      .story, .albums {
+        padding: 14px;
+      }
+
+      .story {
+        margin: 24px auto;
+      }
+
+      .album-card {
+        padding: 17px;
+      }
+
+      .door-scene {
+        height: 260px;
+      }
+
+      .welcome-content {
+        padding: 15px 8px;
+      }
+
+      .rainbow-bridge {
+        top: 120px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -364,131 +491,21 @@
         transition-duration: .01ms !important;
       }
     }
-
-/* ===== রূপকথার জাদুকরি সাজসজ্জা ===== */
-
-/* জোনাকির আলো */
-.firefly-layer {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.firefly {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #ffe99a;
-  box-shadow: 0 0 8px 3px #ffd65c99;
-  animation: fireflyFloat 7s ease-in-out infinite alternate,
-             fireflyGlow 2s ease-in-out infinite alternate;
-}
-
-.firefly:nth-child(1) { left: 9%; top: 27%; animation-delay: -1s; }
-.firefly:nth-child(2) { left: 83%; top: 32%; animation-delay: -4s; }
-.firefly:nth-child(3) { left: 18%; top: 57%; animation-delay: -2s; }
-.firefly:nth-child(4) { left: 88%; top: 65%; animation-delay: -5s; }
-.firefly:nth-child(5) { left: 30%; top: 76%; animation-delay: -3s; }
-.firefly:nth-child(6) { left: 72%; top: 22%; animation-delay: -2s; }
-.firefly:nth-child(7) { left: 54%; top: 61%; animation-delay: -6s; }
-.firefly:nth-child(8) { left: 5%; top: 82%; animation-delay: -4s; }
-
-@keyframes fireflyFloat {
-  0% { transform: translate(0, 0); }
-  50% { transform: translate(18px, -25px); }
-  100% { transform: translate(-12px, -45px); }
-}
-
-@keyframes fireflyGlow {
-  from { opacity: .2; }
-  to { opacity: 1; }
-}
-
-/* উড়ন্ত পঙ্ক্ষীরাজ */
-.pegasus {
-  position: absolute;
-  left: -100px;
-  top: 18%;
-  z-index: 3;
-  font-size: 36px;
-  white-space: nowrap;
-  pointer-events: none;
-  filter: drop-shadow(0 0 10px #b8dfff);
-  animation: pegasusFlight 18s linear infinite;
-}
-
-@keyframes pegasusFlight {
-  0% { transform: translateX(-100px) translateY(0) scale(.8); }
-  25% { transform: translateX(30vw) translateY(-22px) scale(.95); }
-  50% { transform: translateX(65vw) translateY(12px) scale(1.05); }
-  75% { transform: translateX(100vw) translateY(-20px) scale(.9); }
-  100% { transform: translateX(125vw) translateY(0) scale(.8); }
-}
-
-/* রংধনুর সেতু */
-.rainbow-bridge {
-  position: absolute;
-  left: 50%;
-  bottom: 7%;
-  width: min(320px, 78vw);
-  height: 105px;
-  transform: translateX(-50%);
-  border-top: 7px solid #ff8585;
-  border-radius: 50% 50% 0 0;
-  box-shadow:
-    0 -7px 0 -1px #ffd778,
-    0 -14px 0 -2px #a6f2b3,
-    0 -21px 0 -3px #8bd9ff,
-    0 -28px 0 -4px #c6a0ff;
-  opacity: .68;
-  pointer-events: none;
-}
-
-/* মূল ওয়েবসাইটে সাজসজ্জা */
-#main-site {
-  position: relative;
-  isolation: isolate;
-}
-
-#main-site .main-magic {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-/* লেখার পেছনে মৃদু রংধনুর আভা */
-#main-site .rainbow-bridge {
-  top: 12px;
-  bottom: auto;
-  opacity: .20;
-}
-
-/* ছোট পর্দায় অ্যানিমেশন হালকা রাখা */
-@media (max-width: 600px) {
-  .pegasus { font-size: 27px; }
-  .rainbow-bridge { height: 75px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .firefly, .pegasus {
-    animation: none !important;
-  }
-}
   </style>
 </head>
 
 <body>
 
-<!-- জাদুকরি প্রবেশদ্বার -->
+<!-- প্রবেশদ্বার -->
 <section class="welcome-screen" id="welcome-screen"
          aria-label="রূপকথার প্রবেশদ্বার">
 
-  <div class="firefly-layer" aria-hidden="true">
+  <div class="magic-layer welcome-magic" aria-hidden="true">
+    <div class="star-field"></div>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
     <span class="firefly"></span>
     <span class="firefly"></span>
     <span class="firefly"></span>
@@ -498,9 +515,6 @@
     <span class="firefly"></span>
     <span class="firefly"></span>
   </div>
-
-  <div class="pegasus" aria-hidden="true">🪽🐎✨</div>
-  <div class="rainbow-bridge" aria-hidden="true"></div>
 
   <div class="welcome-content">
     <div class="moon" aria-hidden="true">☾ ✦</div>
@@ -525,32 +539,36 @@
       ✦ &nbsp; দরজা খুলুন &nbsp; ✦
     </button>
 
-    <p class="welcome-hint">দরজাটি খুলে প্রবেশ করো তোমার রূপকথায় 🌙</p>
+    <p class="welcome-hint">
+      দরজাটি খুলে প্রবেশ করো তোমার রূপকথায় 🌙
+    </p>
   </div>
 </section>
 
-<!-- তোমার মূল ওয়েবসাইট -->
+<!-- মূল গল্প ও গান -->
 <div id="main-site">
 
-  <div class="main-magic" aria-hidden="true">
-    <div class="firefly-layer">
-      <span class="firefly"></span>
-      <span class="firefly"></span>
-      <span class="firefly"></span>
-      <span class="firefly"></span>
-      <span class="firefly"></span>
-      <span class="firefly"></span>
-      <span class="firefly"></span>
-      <span class="firefly"></span>
-    </div>
-
-    <div class="pegasus">🪽🐎✨</div>
+  <div class="magic-layer main-magic" aria-hidden="true">
+    <div class="star-field"></div>
     <div class="rainbow-bridge"></div>
+
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
   </div>
 
   <main>
     <section class="story">
-      <h1>রূপকথার গল্প 🌙</h1>
+      <h1>রূপকথার গল্প ❤️</h1>
 
       <div class="story-text">মানুষের জীবনে যখন সেই পারফেক্ট মানুষটা আসে
 কিছু সুখ হয়ে বা কিছু সুখের কারণ হয়ে,
@@ -595,63 +613,99 @@ I love youu pakhi🥰</div>
         <p>কিছু গান, কিছু অনুভূতি, কিছু স্মৃতি আর এক টুকরো রূপকথা ❤️</p>
       </div>
 
+      <!-- Album 1 -->
       <div class="album-card">
         <h3>🌙 রূপকথার রাজ্যে পদার্পন</h3>
         <p class="album-note">অ্যালবাম ১ · ৬টি গান</p>
 
         <div class="track">
           <span class="track-label">🎵 Kono ekdin</span>
-          <audio controls preload="none"><source src="Kono%20ekdin.mp3" type="audio/mpeg"></audio>
+          <audio controls preload="none">
+            <source src="Kono%20ekdin.mp3" type="audio/mpeg">
+          </audio>
         </div>
+
         <div class="track">
           <span class="track-label">🎵 Purnota</span>
-          <audio controls preload="none"><source src="Purnota.mp3" type="audio/mpeg"></audio>
+          <audio controls preload="none">
+            <source src="Purnota.mp3" type="audio/mpeg">
+          </audio>
         </div>
+
         <div class="track">
           <span class="track-label">🎵 Amar rupkotha</span>
-          <audio controls preload="none"><source src="Amar%20rupkotha.mp3" type="audio/mpeg"></audio>
+          <audio controls preload="none">
+            <source src="Amar%20rupkotha.mp3" type="audio/mpeg">
+          </audio>
         </div>
+
         <div class="track">
           <span class="track-label">🎵 Paliye jabo</span>
-          <audio controls preload="none"><source src="Paliye%20jabo.mp3" type="audio/mpeg"></audio>
+          <audio controls preload="none">
+            <source src="Paliye%20jabo.mp3" type="audio/mpeg">
+          </audio>
         </div>
+
         <div class="track">
           <span class="track-label">🎵 Cholo harai</span>
-          <audio controls preload="none"><source src="Cholo%20harai.mp3" type="audio/mpeg"></audio>
+          <audio controls preload="none">
+            <source src="Cholo%20harai.mp3" type="audio/mpeg">
+          </audio>
         </div>
+
         <div class="track">
           <span class="track-label">🎵 kivabe thakbo</span>
-          <audio controls preload="none"><source src="Kivabe%20thakbo.mp3" type="audio/mpeg"></audio>
+          <audio controls preload="none">
+            <source src="Kivabe%20thakbo.mp3" type="audio/mpeg">
+          </audio>
         </div>
       </div>
 
+      <!-- Album 2 -->
       <div class="album-card">
         <h3>🕊️ বন্দীদশার পরে</h3>
         <p class="album-note">অ্যালবাম ২ · ৬টি গান</p>
 
         <div class="track">
           <span class="track-label">🎵 Opekkha</span>
-          <audio controls preload="none"><source src="Opekkha.mp3" type="audio/mpeg"></audio>
+          <audio controls preload="none">
+            <source src="Opekkha.mp3" type="audio/mpeg">
+          </audio>
         </div>
+
         <div class="track">
           <span class="track-label">🎵 Amay dekho tumi</span>
-          <audio controls preload="none"><source src="Amay%20dekho%20tumi%20%5Busesuno.com%5D.mp3" type="audio/mpeg"></audio>
+          <audio controls preload="none">
+            <source src="Amay%20dekho%20tumi%20%5Busesuno.com%5D.mp3" type="audio/mpeg">
+          </audio>
         </div>
+
         <div class="track">
           <span class="track-label">🎵 Ure jabo (paliye jabo 2)</span>
-          <audio controls preload="none"><source src="Ure%20jabo%20final.mp3" type="audio/mpeg"></audio>
+          <audio controls preload="none">
+            <source src="Ure%20jabo%20final.mp3" type="audio/mpeg">
+          </audio>
         </div>
+
         <div class="track">
           <span class="track-label">🎵 shopno</span>
-          <audio controls preload="none"><source src="shopno%20%5Busesuno.com%5D.mp3" type="audio/mpeg"></audio>
+          <audio controls preload="none">
+            <source src="shopno%20%5Busesuno.com%5D.mp3" type="audio/mpeg">
+          </audio>
         </div>
+
         <div class="track">
           <span class="track-label">🎵 pakhi</span>
-          <audio controls preload="none"><source src="pakhi%20-%20usesuno.com.mp3" type="audio/mpeg"></audio>
+          <audio controls preload="none">
+            <source src="pakhi%20-%20usesuno.com.mp3" type="audio/mpeg">
+          </audio>
         </div>
+
         <div class="track">
           <span class="track-label">🎵 ekta govir ghum (reprise)</span>
-          <audio controls preload="none"><source src="গভীর%20ঘুম%20-%20usesuno.com.mp3" type="audio/mpeg"></audio>
+          <audio controls preload="none">
+            <source src="গভীর%20ঘুম%20-%20usesuno.com.mp3" type="audio/mpeg">
+          </audio>
         </div>
       </div>
     </section>
@@ -671,6 +725,8 @@ I love youu pakhi🥰</div>
   const enterButton = document.getElementById('enter-button');
   const mainSite = document.getElementById('main-site');
 
+  document.body.style.overflow = 'hidden';
+
   enterButton.addEventListener('click', function () {
     enterButton.disabled = true;
     welcomeScreen.classList.add('opening');
@@ -681,9 +737,6 @@ I love youu pakhi🥰</div>
       document.body.style.overflow = 'auto';
     }, 1500);
   });
-
-  /* প্রবেশদ্বার থাকা অবস্থায় পেছনের পেজ স্ক্রল বন্ধ */
-  document.body.style.overflow = 'hidden';
 </script>
 
 </body>
