@@ -303,54 +303,111 @@ body {
   }
 }
   
-/* Make the doctor and children much larger */
+/* EXTRA LARGE CHAMBER CHARACTERS */
 .playroom {
-  height: 780px !important;
+  position: relative !important;
+  height: 1000px !important;
+  min-height: 1000px !important;
   overflow: visible !important;
 }
 
-.doctor {
-  width: 460px !important;
-  max-width: 75vw !important;
+.playroom img.doctor {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  width: 700px !important;
+  max-width: 95vw !important;
   height: auto !important;
-  z-index: 5 !important;
+  transform: translate(-50%, -50%) !important;
+  object-fit: contain !important;
+  z-index: 4 !important;
 }
 
-.child {
-  width: 260px !important;
-  max-width: 44vw !important;
+.playroom img.child {
+  position: absolute !important;
+  width: 400px !important;
+  max-width: 58vw !important;
   height: auto !important;
   object-fit: contain !important;
+  z-index: 6 !important;
 }
 
-.child-1 { left: 0 !important; top: 5% !important; }
-.child-2 { right: 0 !important; top: 5% !important; }
-.child-3 { left: 0 !important; top: 40% !important; }
-.child-4 { right: 0 !important; top: 40% !important; }
-.child-5 { left: 12% !important; bottom: 0 !important; }
-.child-6 { right: 12% !important; bottom: 0 !important; }
+.playroom img.child-1 {
+  left: -2% !important;
+  top: 0 !important;
+}
+
+.playroom img.child-2 {
+  right: -2% !important;
+  top: 0 !important;
+}
+
+.playroom img.child-3 {
+  left: -3% !important;
+  top: 34% !important;
+}
+
+.playroom img.child-4 {
+  right: -3% !important;
+  top: 34% !important;
+}
+
+.playroom img.child-5 {
+  left: 8% !important;
+  bottom: 0 !important;
+}
+
+.playroom img.child-6 {
+  right: 8% !important;
+  bottom: 0 !important;
+}
 
 @media (max-width: 600px) {
   .playroom {
-    height: 680px !important;
+    height: 850px !important;
+    min-height: 850px !important;
   }
 
-  .doctor {
-    width: 300px !important;
-    max-width: 82vw !important;
+  .playroom img.doctor {
+    width: 110vw !important;
+    max-width: none !important;
+    top: 48% !important;
   }
 
-  .child {
-    width: 155px !important;
-    max-width: 43vw !important;
+  .playroom img.child {
+    width: 62vw !important;
+    max-width: none !important;
   }
 
-  .child-1 { left: 0 !important; top: 4% !important; }
-  .child-2 { right: 0 !important; top: 4% !important; }
-  .child-3 { left: 0 !important; top: 35% !important; }
-  .child-4 { right: 0 !important; top: 35% !important; }
-  .child-5 { left: 0 !important; bottom: 0 !important; }
-  .child-6 { right: 0 !important; bottom: 0 !important; }
+  .playroom img.child-1 {
+    left: -10% !important;
+    top: 0 !important;
+  }
+
+  .playroom img.child-2 {
+    right: -10% !important;
+    top: 0 !important;
+  }
+
+  .playroom img.child-3 {
+    left: -12% !important;
+    top: 31% !important;
+  }
+
+  .playroom img.child-4 {
+    right: -12% !important;
+    top: 31% !important;
+  }
+
+  .playroom img.child-5 {
+    left: -5% !important;
+    bottom: 0 !important;
+  }
+
+  .playroom img.child-6 {
+    right: -5% !important;
+    bottom: 0 !important;
+  }
 }
 </style>
 </head>
