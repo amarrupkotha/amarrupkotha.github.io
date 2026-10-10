@@ -364,6 +364,121 @@
         transition-duration: .01ms !important;
       }
     }
+
+/* ===== রূপকথার জাদুকরি সাজসজ্জা ===== */
+
+/* জোনাকির আলো */
+.firefly-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.firefly {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffe99a;
+  box-shadow: 0 0 8px 3px #ffd65c99;
+  animation: fireflyFloat 7s ease-in-out infinite alternate,
+             fireflyGlow 2s ease-in-out infinite alternate;
+}
+
+.firefly:nth-child(1) { left: 9%; top: 27%; animation-delay: -1s; }
+.firefly:nth-child(2) { left: 83%; top: 32%; animation-delay: -4s; }
+.firefly:nth-child(3) { left: 18%; top: 57%; animation-delay: -2s; }
+.firefly:nth-child(4) { left: 88%; top: 65%; animation-delay: -5s; }
+.firefly:nth-child(5) { left: 30%; top: 76%; animation-delay: -3s; }
+.firefly:nth-child(6) { left: 72%; top: 22%; animation-delay: -2s; }
+.firefly:nth-child(7) { left: 54%; top: 61%; animation-delay: -6s; }
+.firefly:nth-child(8) { left: 5%; top: 82%; animation-delay: -4s; }
+
+@keyframes fireflyFloat {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(18px, -25px); }
+  100% { transform: translate(-12px, -45px); }
+}
+
+@keyframes fireflyGlow {
+  from { opacity: .2; }
+  to { opacity: 1; }
+}
+
+/* উড়ন্ত পঙ্ক্ষীরাজ */
+.pegasus {
+  position: absolute;
+  left: -100px;
+  top: 18%;
+  z-index: 3;
+  font-size: 36px;
+  white-space: nowrap;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px #b8dfff);
+  animation: pegasusFlight 18s linear infinite;
+}
+
+@keyframes pegasusFlight {
+  0% { transform: translateX(-100px) translateY(0) scale(.8); }
+  25% { transform: translateX(30vw) translateY(-22px) scale(.95); }
+  50% { transform: translateX(65vw) translateY(12px) scale(1.05); }
+  75% { transform: translateX(100vw) translateY(-20px) scale(.9); }
+  100% { transform: translateX(125vw) translateY(0) scale(.8); }
+}
+
+/* রংধনুর সেতু */
+.rainbow-bridge {
+  position: absolute;
+  left: 50%;
+  bottom: 7%;
+  width: min(320px, 78vw);
+  height: 105px;
+  transform: translateX(-50%);
+  border-top: 7px solid #ff8585;
+  border-radius: 50% 50% 0 0;
+  box-shadow:
+    0 -7px 0 -1px #ffd778,
+    0 -14px 0 -2px #a6f2b3,
+    0 -21px 0 -3px #8bd9ff,
+    0 -28px 0 -4px #c6a0ff;
+  opacity: .68;
+  pointer-events: none;
+}
+
+/* মূল ওয়েবসাইটে সাজসজ্জা */
+#main-site {
+  position: relative;
+  isolation: isolate;
+}
+
+#main-site .main-magic {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* লেখার পেছনে মৃদু রংধনুর আভা */
+#main-site .rainbow-bridge {
+  top: 12px;
+  bottom: auto;
+  opacity: .20;
+}
+
+/* ছোট পর্দায় অ্যানিমেশন হালকা রাখা */
+@media (max-width: 600px) {
+  .pegasus { font-size: 27px; }
+  .rainbow-bridge { height: 75px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .firefly, .pegasus {
+    animation: none !important;
+  }
+}
   </style>
 </head>
 
