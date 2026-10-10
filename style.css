@@ -383,3 +383,34 @@ footer {
     font-size: 18px;
   }
 }
+.pegasus-flight {
+  position: fixed;
+  top: 18%;
+  left: -220px;
+  width: 150px;
+  z-index: 10;
+  pointer-events: none;
+  animation: flyPegasus 22s linear infinite;
+}
+
+.pegasus-flight img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 12px #c5e6ff);
+}
+
+@keyframes flyPegasus {
+  0%   { left: -220px; transform: translateY(0); }
+  25%  { transform: translateY(-25px); }
+  50%  { transform: translateY(10px); }
+  75%  { transform: translateY(-30px); }
+  100% { left: 110%; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .pegasus-flight {
+    width: 100px;
+    top: 12%;
+  }
+}
