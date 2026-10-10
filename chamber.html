@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Rupkotha's Chamber 🌸</title>
+
+<style>
+:root {
+  --pink: #ff80ab;
+  --purple: #9b7bdb;
+  --cream: #fff9f0;
+  --ink: #604a67;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Noto Sans Bengali", "Hind Siliguri",
+               system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+}
+
+button, a { font: inherit; }
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(255,249,250,.12),
+                    rgba(255,249,240,.28)),
+    url("assets/chamber/clinic-bg.jpg") center / cover no-repeat,
+    #e8f6f4;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.10),
+    rgba(255,245,248,.20) 60%,
+    rgba(255,249,240,.8)
+  );
+  pointer-events: none;
+}
+
+.topbar {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 18px clamp(14px, 4vw, 42px);
+  background: rgba(255,255,255,.76);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #fff;
+}
+
+.brand {
+  font-size: clamp(16px, 3vw, 24px);
+  font-weight: 800;
+  color: #a44f88;
+}
+
+.home-link {
+  text-decoration: none;
+  color: #704f91;
+  background: white;
+  border: 1px solid #edd7eb;
+  border-radius: 999px;
+  padding: 10px 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px #a27aa522;
+}
+
+.intro {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 26px 16px 0;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: clamp(28px, 6vw, 52px);
+  color: #9c568f;
+  text-shadow: 0 2px white, 0 5px 18px #fff8;
+}
+
+.intro p {
+  margin: 8px auto;
+  max-width: 620px;
+  font-size: clamp(14px, 2.8vw, 18px);
+  line-height: 1.8;
+}
+
+.scene {
+  position: relative;
+  width: min(100%, 1000px);
+  height: clamp(340px, 58vh, 560px);
+  margin: 0 auto;
+}
+
+.doctor {
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  width: clamp(130px, 23vw, 220px);
+  max-height: 90%;
+  object-fit: contain;
+  object-position: bottom;
+  transform: translateX(-50%);
+  transform-origin: center bottom;
+  filter: drop-shadow(0 8px 9px #654c6b26);
+  animation: doctorFloat 3.8s ease-in-out infinite;
+  z-index: 3;
+}
+
+.child {
+  position: absolute;
+  bottom: 2%;
+  width: clamp(76px, 14vw, 140px);
+  max-height: 45%;
+  object-fit: contain;
+  object-position: bottom;
+  transform-origin: center bottom;
+  filter: drop-shadow(0 5px 5px #654c6b20);
+  animation: childBounce 2.2s ease-in-out infinite;
+}
+
+.c1 { left: 3%; animation-delay: -.3s; }
+.c2 { left: 19%; animation-delay: -1.1s; }
+.c3 { left: 34%; animation-delay: -.7s; }
+.c4 { right: 34%; animation-delay: -1.4s; }
+.c5 { right: 19%; animation-delay: -.5s; }
+.c6 { right: 3%; animation-delay: -1.7s; }
+
+.c1, .c6 { width: clamp(72px, 12vw, 118px); }
+.c2, .c5 { width: clamp(82px, 14vw, 136px); }
+
+.bubble {
+  position: absolute;
+  z-index: 4;
+  font-size: clamp(18px, 3vw, 30px);
+  pointer-events: none;
+  animation: drift 6s ease-in-out infinite;
+}
+.b1 { left: 8%; top: 20%; }
+.b2 { left: 28%; top: 38%; animation-delay: -2s; }
+.b3 { right: 10%; top: 24%; animation-delay: -3s; }
+.b4 { right: 25%; top: 10%; animation-delay: -1s; }
+
+.greeting {
+  position: relative;
+  z-index: 4;
+  width: fit-content;
+  max-width: calc(100% - 28px);
+  margin: -2px auto 0;
+  padding: 13px 22px;
+  text-align: center;
+  background: #ffffffdc;
+  border: 2px solid #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 30px #a27aa522;
+  line-height: 1.8;
+}
+
+.greeting strong {
+  color: #b45c98;
+}
+
+.footer {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  padding: 20px 12px 28px;
+  font-size: 13px;
+  color: #866d85;
+}
+
+@keyframes doctorFloat {
+  0%, 100% { transform: translate(-50%, 0) rotate(0); }
+  50% { transform: translate(-50%, -9px) rotate(1deg); }
+}
+
+@keyframes childBounce {
+  0%, 100% { translate: 0 0; rotate: 0deg; }
+  35% { translate: 0 -9px; rotate: -2deg; }
+  70% { translate: 0 -2px; rotate: 2deg; }
+}
+
+@keyframes drift {
+  0%, 100% { translate: 0 0; rotate: -8deg; }
+  50% { translate: 10px -18px; rotate: 10deg; }
+}
+
+@media (max-width: 520px) {
+  .topbar { padding: 12px; }
+  .home-link { padding: 8px 10px; font-size: 13px; }
+  .scene { height: 390px; }
+  .doctor { width: 138px; }
+  .child { max-height: 34%; }
+  .c1 { left: 1%; }
+  .c2 { left: 16%; }
+  .c3 { left: 30%; }
+  .c4 { right: 30%; }
+  .c5 { right: 16%; }
+  .c6 { right: 1%; }
+  .greeting { font-size: 14px; padding: 10px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<section class="hero">
+  <header class="topbar">
+    <div class="brand">🩺 Dr. Rupkotha</div>
+    <a class="home-link" href="index.html">← মূল পেজে ফিরি</a>
+  </header>
+
+  <div class="intro">
+    <h1>Dr. Rupkotha's Chamber 🌸</h1>
+    <p>ছোট্ট সোনামণিদের হাসি, খেলা আর ভালোবাসার জগৎ! 🧸</p>
+  </div>
+
+  <main class="scene" aria-label="Rupkotha and the children">
+    <span class="bubble b1" aria-hidden="true">🦋</span>
+    <span class="bubble b2" aria-hidden="true">✨</span>
+    <span class="bubble b3" aria-hidden="true">🎈</span>
+    <span class="bubble b4" aria-hidden="true">🌟</span>
+
+    <img class="child c1" src="assets/chamber/child-1.png"
+         alt="খেলতে থাকা শিশু">
+    <img class="child c2" src="assets/chamber/child-2.png"
+         alt="আনন্দিত শিশু">
+    <img class="child c3" src="assets/chamber/child-3.png"
+         alt="হাসিখুশি শিশু">
+
+    <img class="doctor" src="assets/chamber/rupkotha.png"
+         alt="Dr. Rupkotha">
+
+    <img class="child c4" src="assets/chamber/child-4.png"
+         alt="খেলতে থাকা শিশু">
+    <img class="child c5" src="assets/chamber/child-5.png"
+         alt="আনন্দিত শিশু">
+    <img class="child c6" src="assets/chamber/child-6.png"
+         alt="হাসিখুশি শিশু">
+  </main>
+
+  <div class="greeting">
+    <strong>রূপকথার চেম্বারে স্বাগতম! 💖</strong><br>
+    এখানে ছোট্ট হাসিগুলোই সবচেয়ে বড় উপহার।
+  </div>
+
+  <footer class="footer">
+    Made with love for Rupkotha 🌷
+  </footer>
+</section>
+</body>
+</html>
