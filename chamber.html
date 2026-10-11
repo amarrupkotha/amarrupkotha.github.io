@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Rupkotha's Chamber</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #fdf5ed;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 520px;
+  overflow: hidden;
+  background-image: url("assets/chamber/clinic-bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.character {
+  position: absolute;
+  width: clamp(115px, 25vw, 250px);
+  height: auto;
+  object-fit: contain;
+  bottom: 5%;
+  animation: gentleFloat 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 5px 5px #5d4b3520);
+}
+
+.doctor {
+  width: clamp(155px, 32vw, 300px);
+  left: 50%;
+  bottom: 3%;
+  transform: translateX(-50%);
+  animation: doctorFloat 4s ease-in-out infinite;
+}
+
+.left {
+  left: 3%;
+}
+
+.right {
+  right: 3%;
+}
+
+.middle-left {
+  left: 22%;
+}
+
+.middle-right {
+  right: 20%;
+}
+
+.high {
+  bottom: 22%;
+}
+
+.low {
+  bottom: 2%;
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -9px;
+  }
+}
+
+@keyframes doctorFloat {
+  0%, 100% {
+    translate: -50% 0;
+  }
+  50% {
+    translate: -50% -6px;
+  }
+}
+
+@media (max-width: 600px) {
+  .scene {
+    min-height: 620px;
+    background-position: center;
+  }
+
+  .character {
+    width: 34vw;
+  }
+
+  .doctor {
+    width: 43vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .character {
+    animation: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Scene 1: Doctor -->
+<section class="scene">
+  <img class="character doctor"
+       src="assets/chamber/rupkotha.png"
+       alt="">
+</section>
+
+<!-- Scene 2 -->
+<section class="scene">
+  <img class="character left low"
+       src="assets/chamber/child-1.png" alt="">
+  <img class="character right high"
+       src="assets/chamber/child-2.png" alt="">
+</section>
+
+<!-- Scene 3 -->
+<section class="scene">
+  <img class="character right low"
+       src="assets/chamber/child-3.png" alt="">
+  <img class="character left high"
+       src="assets/chamber/child-4.png" alt="">
+</section>
+
+<!-- Scene 4 -->
+<section class="scene">
+  <img class="character middle-left low"
+       src="assets/chamber/child-5.png" alt="">
+  <img class="character middle-right high"
+       src="assets/chamber/child-6.png" alt="">
+</section>
+
+<!-- Scene 5: Doctor and children -->
+<section class="scene">
+  <img class="character left low"
+       src="assets/chamber/child-2.png" alt="">
+  <img class="character right low"
+       src="assets/chamber/child-5.png" alt="">
+  <img class="character doctor"
+       src="assets/chamber/rupkotha.png" alt="">
+</section>
+
+</body>
+</html>
