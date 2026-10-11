@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dr. Rupkotha's Chamber</title>
+<title>Rupkotha's Clinic</title>
 
 <style>
 * {
@@ -12,140 +12,67 @@
 
 html, body {
   margin: 0;
-  padding: 0;
   width: 100%;
-}
-
-body {
-  overflow-x: hidden;
-  background: #f8e9dc;
-}
-
-.chamber {
-  position: relative;
-  width: 100%;
-  min-height: 180vh;
-  background-image: url("assets/chamber/clinic-bg.jpg");
-  background-size: 100% 100%;
-  background-position: top center;
-  background-repeat: no-repeat;
+  height: 100%;
   overflow: hidden;
 }
 
-.person {
-  position: absolute;
-  display: block;
-  height: auto;
-  object-fit: contain;
-  animation: float 4s ease-in-out infinite;
-  filter: drop-shadow(0 7px 6px #49372a24);
+.clinic {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  background: url("assets/chamber/clinic-bg.jpg")
+              center center / 100% 100% no-repeat;
 }
 
-.doctor {
-  width: 38%;
-  max-width: 330px;
-  top: 8%;
-  left: 31%;
-  animation-delay: -.8s;
+img {
+  position: absolute;
+  height: auto;
+  object-fit: contain;
+}
+
+.rupkotha {
+  width: 35%;
+  max-height: 65%;
+  left: 32.5%;
+  bottom: 8%;
 }
 
 .child {
-  width: 30%;
-  max-width: 250px;
+  width: 21%;
+  max-height: 35%;
 }
 
-.c1 {
-  top: 25%;
-  left: 2%;
-  animation-delay: -.5s;
-}
-
-.c2 {
-  top: 30%;
-  right: 2%;
-  animation-delay: -2s;
-}
-
-.c3 {
-  top: 48%;
-  left: 4%;
-  animation-delay: -1.5s;
-}
-
-.c4 {
-  top: 51%;
-  right: 3%;
-  animation-delay: -3s;
-}
-
-.c5 {
-  top: 68%;
-  left: 8%;
-  animation-delay: -2.5s;
-}
-
-.c6 {
-  top: 72%;
-  right: 7%;
-  animation-delay: -1s;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
+.c1 { left: 1%; top: 8%; }
+.c2 { right: 1%; top: 8%; }
+.c3 { left: 2%; top: 38%; }
+.c4 { right: 2%; top: 38%; }
+.c5 { left: 12%; bottom: 3%; }
+.c6 { right: 12%; bottom: 3%; }
 
 @media (min-width: 700px) {
-  .chamber {
-    min-height: 170vh;
-  }
-
-  .doctor {
+  .rupkotha {
     width: 25%;
     left: 37.5%;
   }
 
   .child {
-    width: 20%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .person {
-    animation: none;
+    width: 15%;
   }
 }
 </style>
 </head>
 
 <body>
-<main class="chamber">
+<div class="clinic">
+  <img class="rupkotha" src="assets/chamber/rupkotha.png" alt="">
 
-  <img class="person doctor"
-       src="assets/chamber/rupkotha.png" alt="">
-
-  <img class="person child c1"
-       src="assets/chamber/child-1.png" alt="">
-
-  <img class="person child c2"
-       src="assets/chamber/child-2.png" alt="">
-
-  <img class="person child c3"
-       src="assets/chamber/child-3.png" alt="">
-
-  <img class="person child c4"
-       src="assets/chamber/child-4.png" alt="">
-
-  <img class="person child c5"
-       src="assets/chamber/child-5.png" alt="">
-
-  <img class="person child c6"
-       src="assets/chamber/child-6.png" alt="">
-
-</main>
+  <img class="child c1" src="assets/chamber/child-1.png" alt="">
+  <img class="child c2" src="assets/chamber/child-2.png" alt="">
+  <img class="child c3" src="assets/chamber/child-3.png" alt="">
+  <img class="child c4" src="assets/chamber/child-4.png" alt="">
+  <img class="child c5" src="assets/chamber/child-5.png" alt="">
+  <img class="child c6" src="assets/chamber/child-6.png" alt="">
+</div>
 </body>
 </html>
