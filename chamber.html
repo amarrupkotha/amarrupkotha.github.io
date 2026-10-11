@@ -15,71 +15,103 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background: #f4eee7;
 }
 
+.stage {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
 
 .clinic {
   position: relative;
-  width: 100%;
+  width: min(100vw, 177.7778vh);
   aspect-ratio: 16 / 9;
-  height: auto;
-  max-height: 100dvh;
-  margin: auto;
+  flex: none;
   background-image: url("assets/chamber/clinic-bg.jpg");
   background-size: 100% 100%;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
 }
 
-
-img {
+.person {
   position: absolute;
+  display: block;
   height: auto;
   object-fit: contain;
 }
 
+/* রূপকথা */
 .rupkotha {
-  width: 35%;
-  max-height: 65%;
-  left: 32.5%;
-  bottom: 8%;
+  width: 22%;
+  left: 39%;
+  bottom: 5%;
+  z-index: 2;
 }
 
+/* সব বাচ্চার পায়ের অবস্থান একই ফ্লোরে */
 .child {
-  width: 21%;
-  max-height: 35%;
+  width: 13%;
+  bottom: 4%;
+  z-index: 3;
 }
 
-.c1 { left: 1%; top: 8%; }
-.c2 { right: 1%; top: 8%; }
-.c3 { left: 2%; top: 38%; }
-.c4 { right: 2%; top: 38%; }
-.c5 { left: 12%; bottom: 3%; }
-.c6 { right: 12%; bottom: 3%; }
+.c1 { left: 1%; }
+.c2 { left: 16%; }
+.c3 { left: 31%; }
+.c4 { left: 56%; }
+.c5 { left: 71%; }
+.c6 { left: 86%; }
 
-@media (min-width: 700px) {
+/* ছোট স্ক্রিনে ছবিগুলো যেন দৃশ্যের ভেতরে থাকে */
+@media (max-aspect-ratio: 4/5) {
+  .clinic {
+    width: 100vw;
+  }
+
   .rupkotha {
-    width: 25%;
-    left: 37.5%;
+    width: 24%;
+    left: 38%;
   }
 
   .child {
-    width: 15%;
+    width: 14%;
   }
 }
 </style>
 </head>
 
 <body>
-<div class="clinic">
-  <img class="rupkotha" src="assets/chamber/rupkotha.png" alt="">
+<div class="stage">
+  <main class="clinic">
 
-  <img class="child c1" src="assets/chamber/child-1.png" alt="">
-  <img class="child c2" src="assets/chamber/child-2.png" alt="">
-  <img class="child c3" src="assets/chamber/child-3.png" alt="">
-  <img class="child c4" src="assets/chamber/child-4.png" alt="">
-  <img class="child c5" src="assets/chamber/child-5.png" alt="">
-  <img class="child c6" src="assets/chamber/child-6.png" alt="">
+    <img class="person rupkotha"
+         src="assets/chamber/rupkotha.png" alt="">
+
+    <img class="person child c1"
+         src="assets/chamber/child-1.png" alt="">
+
+    <img class="person child c2"
+         src="assets/chamber/child-2.png" alt="">
+
+    <img class="person child c3"
+         src="assets/chamber/child-3.png" alt="">
+
+    <img class="person child c4"
+         src="assets/chamber/child-4.png" alt="">
+
+    <img class="person child c5"
+         src="assets/chamber/child-5.png" alt="">
+
+    <img class="person child c6"
+         src="assets/chamber/child-6.png" alt="">
+
+  </main>
 </div>
 </body>
 </html>
