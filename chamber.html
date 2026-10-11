@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dr. Rupkotha's Chamber</title>
 
 <style>
@@ -14,103 +14,108 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  background: #fdf5ed;
 }
 
 body {
   overflow-x: hidden;
+  background: #f8e9dc;
 }
 
-.scene {
+.chamber {
   position: relative;
   width: 100%;
-  height: 100vh;
-  height: 100svh;
-  min-height: 520px;
-  overflow: hidden;
+  min-height: 180vh;
   background-image: url("assets/chamber/clinic-bg.jpg");
-  background-position: center;
-  background-size: cover;
+  background-size: 100% 100%;
+  background-position: top center;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
-.character {
+.person {
   position: absolute;
-  width: clamp(115px, 25vw, 250px);
+  display: block;
   height: auto;
   object-fit: contain;
-  bottom: 5%;
-  animation: gentleFloat 3.5s ease-in-out infinite;
-  filter: drop-shadow(0 5px 5px #5d4b3520);
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 7px 6px #49372a24);
 }
 
 .doctor {
-  width: clamp(155px, 32vw, 300px);
-  left: 50%;
-  bottom: 3%;
-  transform: translateX(-50%);
-  animation: doctorFloat 4s ease-in-out infinite;
+  width: 38%;
+  max-width: 330px;
+  top: 8%;
+  left: 31%;
+  animation-delay: -.8s;
 }
 
-.left {
-  left: 3%;
+.child {
+  width: 30%;
+  max-width: 250px;
 }
 
-.right {
+.c1 {
+  top: 25%;
+  left: 2%;
+  animation-delay: -.5s;
+}
+
+.c2 {
+  top: 30%;
+  right: 2%;
+  animation-delay: -2s;
+}
+
+.c3 {
+  top: 48%;
+  left: 4%;
+  animation-delay: -1.5s;
+}
+
+.c4 {
+  top: 51%;
   right: 3%;
+  animation-delay: -3s;
 }
 
-.middle-left {
-  left: 22%;
+.c5 {
+  top: 68%;
+  left: 8%;
+  animation-delay: -2.5s;
 }
 
-.middle-right {
-  right: 20%;
+.c6 {
+  top: 72%;
+  right: 7%;
+  animation-delay: -1s;
 }
 
-.high {
-  bottom: 22%;
-}
-
-.low {
-  bottom: 2%;
-}
-
-@keyframes gentleFloat {
+@keyframes float {
   0%, 100% {
-    translate: 0 0;
+    transform: translateY(0);
   }
   50% {
-    translate: 0 -9px;
+    transform: translateY(-10px);
   }
 }
 
-@keyframes doctorFloat {
-  0%, 100% {
-    translate: -50% 0;
-  }
-  50% {
-    translate: -50% -6px;
-  }
-}
-
-@media (max-width: 600px) {
-  .scene {
-    min-height: 620px;
-    background-position: center;
-  }
-
-  .character {
-    width: 34vw;
+@media (min-width: 700px) {
+  .chamber {
+    min-height: 170vh;
   }
 
   .doctor {
-    width: 43vw;
+    width: 25%;
+    left: 37.5%;
+  }
+
+  .child {
+    width: 20%;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .character {
+  .person {
     animation: none;
   }
 }
@@ -118,47 +123,29 @@ body {
 </head>
 
 <body>
+<main class="chamber">
 
-<!-- Scene 1: Doctor -->
-<section class="scene">
-  <img class="character doctor"
-       src="assets/chamber/rupkotha.png"
-       alt="">
-</section>
-
-<!-- Scene 2 -->
-<section class="scene">
-  <img class="character left low"
-       src="assets/chamber/child-1.png" alt="">
-  <img class="character right high"
-       src="assets/chamber/child-2.png" alt="">
-</section>
-
-<!-- Scene 3 -->
-<section class="scene">
-  <img class="character right low"
-       src="assets/chamber/child-3.png" alt="">
-  <img class="character left high"
-       src="assets/chamber/child-4.png" alt="">
-</section>
-
-<!-- Scene 4 -->
-<section class="scene">
-  <img class="character middle-left low"
-       src="assets/chamber/child-5.png" alt="">
-  <img class="character middle-right high"
-       src="assets/chamber/child-6.png" alt="">
-</section>
-
-<!-- Scene 5: Doctor and children -->
-<section class="scene">
-  <img class="character left low"
-       src="assets/chamber/child-2.png" alt="">
-  <img class="character right low"
-       src="assets/chamber/child-5.png" alt="">
-  <img class="character doctor"
+  <img class="person doctor"
        src="assets/chamber/rupkotha.png" alt="">
-</section>
 
+  <img class="person child c1"
+       src="assets/chamber/child-1.png" alt="">
+
+  <img class="person child c2"
+       src="assets/chamber/child-2.png" alt="">
+
+  <img class="person child c3"
+       src="assets/chamber/child-3.png" alt="">
+
+  <img class="person child c4"
+       src="assets/chamber/child-4.png" alt="">
+
+  <img class="person child c5"
+       src="assets/chamber/child-5.png" alt="">
+
+  <img class="person child c6"
+       src="assets/chamber/child-6.png" alt="">
+
+</main>
 </body>
 </html>
