@@ -17,13 +17,20 @@ html, body {
   overflow: hidden;
 }
 
+
 .clinic {
   position: relative;
   width: 100%;
-  height: 100dvh;
-  background: url("assets/chamber/clinic-bg.jpg")
-              center center / 100% 100% no-repeat;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  max-height: 100dvh;
+  margin: auto;
+  background-image: url("assets/chamber/clinic-bg.jpg");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
 
 img {
   position: absolute;
