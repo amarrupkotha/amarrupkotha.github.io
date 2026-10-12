@@ -1,83 +1,113 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>রূপকথার চেম্বার ❤️</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Rupkotha's Chamber ❤️</title>
 
-<style>
-* {
-  box-sizing: border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-html, body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  background:
-    radial-gradient(ellipse at 15% 20%,
-      rgba(255, 221, 239, 0.9), transparent 45%),
-    radial-gradient(ellipse at 85% 80%,
-      rgba(255, 231, 180, 0.8), transparent 45%),
-    linear-gradient(135deg, #fff8ee, #f8eaff, #fff5e6);
-}
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(ellipse at 15% 20%, #ffdded, transparent 50%),
+        radial-gradient(ellipse at 85% 80%, #ffe7b4, transparent 50%),
+        linear-gradient(135deg, #fff8ee, #f8eaff, #fff5e6);
+    }
 
-/* Dreamy little stars */
-body::before {
-  content: "✦     ✧        ⋆       ✧\A"
-           "    ⋆       ✦       ⋆\A"
-           "✧       ⋆       ✧       ✦\A"
-           "    ✦       ✧        ⋆";
-  white-space: pre;
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  line-height: 3.5;
-  letter-spacing: 14px;
-  font-size: 17px;
-  color: #d8a8cf;
-  opacity: 0.65;
-  pointer-events: none;
-}
+    /* ভিডিও মাঝখানে থাকবে, অনুপাত ঠিক থাকবে */
+    .scene {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-.scene {
-  width: 100vw;
-  height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-}
+    .scene video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
 
-.scene img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-}
-</style>
+    /* হালকা স্বপ্নময় তারা */
+    .stars {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      color: #c99ac2;
+      opacity: 0.5;
+      font-size: 17px;
+      z-index: -1;
+    }
+
+    .stars span {
+      position: absolute;
+    }
+
+    .stars span:nth-child(1) {
+      top: 8%;
+      left: 12%;
+    }
+
+    .stars span:nth-child(2) {
+      top: 18%;
+      right: 10%;
+    }
+
+    .stars span:nth-child(3) {
+      bottom: 12%;
+      left: 8%;
+    }
+
+    .stars span:nth-child(4) {
+      bottom: 9%;
+      right: 12%;
+    }
+  </style>
 </head>
 
 <body>
+
+  <div class="stars" aria-hidden="true">
+    <span>✦</span>
+    <span>✧</span>
+    <span>⋆</span>
+    <span>✧</span>
+  </div>
+
   <main class="scene">
-    <img
-      src="assets/chamber/chamber-scene.png"
-      alt="রূপকথার চেম্বার"
+    <video
+      autoplay
+      muted
+      playsinline
+      preload="auto"
     >
+      <source
+        src="assets/chamber/source.mp4"
+        type="video/mp4"
+      >
+      তোমার ব্রাউজার ভিডিও চালাতে পারছে না।
+    </video>
   </main>
+
 </body>
 </html>
