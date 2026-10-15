@@ -525,7 +525,9 @@
       কল্পনা আর বাস্তবতার মিশেলে গড়া এক রাজ্যে...
     </p>
 
-    <div class="door-scene" aria-hidden="true">
+    <div class="door-scene" id="magic-door"
+     role="button" tabindex="0"
+     aria-label="জাদুর দরজা খুলুন">
       <div class="door-glow"></div>
       <div class="door-frame">
         <div class="door-light"></div>
@@ -801,22 +803,39 @@ I love youu pakhi🥰</div>
 </div>
 
 <script>
-  const welcomeScreen = document.getElementById('welcome-screen');
-  const enterButton = document.getElementById('enter-button');
-  const mainSite = document.getElementById('main-site');
+const welcomeScreen = document.getElementById('welcome-screen');
+const enterButton = document.getElementById('enter-button');
+const magicDoor = document.getElementById('magic-door');
+const mainSite = document.getElementById('main-site');
 
-  document.body.style.overflow = 'hidden';
+document.body.style.overflow = 'hidden';
 
-  enterButton.addEventListener('click', function () {
-    enterButton.disabled = true;
-    welcomeScreen.classList.add('opening');
+let doorOpening = false;
 
-    window.setTimeout(function () {
-      welcomeScreen.classList.add('hide-screen');
-      mainSite.classList.add('site-visible');
-      document.body.style.overflow = 'auto';
-    }, 1500);
-  });
+function openMagicDoor() {
+  if (doorOpening) return;
+
+  doorOpening = true;
+  enterButton.disabled = true;
+
+  welcomeScreen.classList.add('opening');
+
+  window.setTimeout(function () {
+    welcomeScreen.classList.add('hide-screen');
+    mainSite.classList.add('site-visible');
+    document.body.style.overflow = '';
+  }, 1500);
+}
+
+enterButton.addEventListener('click', openMagicDoor);
+magicDoor.addEventListener('click', openMagicDoor);
+
+magicDoor.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    openMagicDoor();
+  }
+});
 </script>
 <div class="pegasus-flight" aria-hidden="true">
   <img src="a_high_resolution_fantasy_style_digital_illustrat.png" alt="">
